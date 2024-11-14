@@ -8,6 +8,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
  - Jest (Test suite)
  - Eslint (Code smell checker)
  - Prettier (Code formatter)
+ - Husky (Hook handler)
+ - Tailwind (Styling utility)
 
 ## Development server
 
@@ -31,6 +33,8 @@ Run `npm run test` to execute the unit tests.
 - Run `npm run format` to execute prettier, and format your code.
 
 ## Architecture
+ For styling the app, we use Tailwind because it speeds up the styling process.
+
  We use this tools to keep the project clean.
 
 ### Husky
@@ -56,7 +60,7 @@ This process ensures that code quality is maintained and reduces the chances of 
 - [x] Install jest test suite
 - [x] Add eslint 
 - [x] Add prettier 
-- [ ] Add husky
+- [x] Add husky
 - [ ] Add tailwind 
 - [ ] Create Layout
 - [ ] Create Stream handler
