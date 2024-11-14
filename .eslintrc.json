@@ -1,19 +1,16 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
-                "plugin:typescript-enum/recommended"
+        "plugin:typescript-enum/recommended",
+        "plugin:prettier/recommended"
       ],
       "plugins": ["import", "unused-imports", "typescript-enum"],
       "rules": {
@@ -46,7 +43,13 @@
         "@typescript-eslint/member-ordering": [
           "error",
           {
-            "default": ["field", "constructor", "public-method", "protected-method", "private-method"]
+            "default": [
+              "field",
+              "constructor",
+              "public-method",
+              "protected-method",
+              "private-method"
+            ]
           }
         ],
         "@typescript-eslint/explicit-function-return-type": "error",
@@ -62,9 +65,7 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
+      "files": ["*.html"],
       "extends": [
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"

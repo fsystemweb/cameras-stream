@@ -21,13 +21,18 @@ Run `npm run test` to execute the unit tests.
 
 ## Running lint
 
-Run `npm run lint` to execute eslint.
+- Run `npm run lint` to execute eslint, to analyze your code and find code smells.
+- Run `npm run lint:fix` to execute eslint and fix common issues.
+
+## Running prettier
+
+- Run `npm run format` to execute prettier, and format your code.
 
 ## Task TODO
 
 - [x] Add Github actions
 - [x] Install jest test suite
-- [ ] Add eslint 
+- [x] Add eslint 
 - [ ] Add prettier 
 - [ ] Add husky
 - [ ] Create Layout
