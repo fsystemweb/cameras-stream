@@ -8,6 +8,4 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './layout.component.html',
   imports: [HeaderComponent, FooterComponent],
 })
-export class LayoutComponent {
-  title = 'cameras-stream';
-}
+export class LayoutComponent {}
