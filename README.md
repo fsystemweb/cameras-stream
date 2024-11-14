@@ -24,6 +24,7 @@ Run `npm run test` to execute the unit tests.
 - [x] Add Github actions
 - [x] Install jest test suite
 - [ ] Add eslint 
+- [ ] Add prettier 
 - [ ] Add husky
 - [ ] Create Layout
 - [ ] Create Stream handler
