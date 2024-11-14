@@ -12,4 +12,6 @@ export class AppComponent {
   title = 'cameras-stream';
 
   constructor() {}
+
+  another(): void {}
 }
