@@ -52,8 +52,6 @@ To ensure the quality and stability of our code before merging any changes into 
 
 This process ensures that code quality is maintained and reduces the chances of introducing bugs into the main branch.
 
-
-
 ## Task TODO
 
 - [x] Add Github actions
@@ -61,7 +59,7 @@ This process ensures that code quality is maintained and reduces the chances of 
 - [x] Add eslint 
 - [x] Add prettier 
 - [x] Add husky
-- [ ] Add tailwind 
+- [x] Add tailwind 
 - [ ] Create Layout
 - [ ] Create Stream handler
 - [ ] Add Snapshot feature

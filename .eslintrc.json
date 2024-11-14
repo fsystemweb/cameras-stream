@@ -2,6 +2,10 @@
   "root": true,
   "extends": ["plugin:tailwindcss/recommended"],
   "ignorePatterns": ["projects/**/*"],
+  "parser": "@babel/eslint-parser",  
+  "parserOptions": {
+    "requireConfigFile": false
+  },
   "overrides": [
     {
       "files": ["*.ts"],

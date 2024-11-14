@@ -41,6 +41,7 @@
     "@angular-eslint/template-parser": "18.4.0",
     "@angular/cli": "^18.0.3",
     "@angular/compiler-cli": "^18.0.0",
+    "@babel/eslint-parser": "^7.25.9",
     "@types/jest": "^29.5.14",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
