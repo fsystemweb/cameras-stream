@@ -5,7 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Libraries
  - Angular 18
  - Node 20.14.0
- - Jest 
+ - Jest (Test suite)
+ - Eslint (Code smell checker)
+ - Prettier (Code formatter)
 
 ## Development server
 
@@ -33,8 +35,9 @@ Run `npm run test` to execute the unit tests.
 - [x] Add Github actions
 - [x] Install jest test suite
 - [x] Add eslint 
-- [ ] Add prettier 
+- [x] Add prettier 
 - [ ] Add husky
+- [ ] Add tailwind 
 - [ ] Create Layout
 - [ ] Create Stream handler
 - [ ] Add Snapshot feature

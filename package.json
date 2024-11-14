@@ -9,7 +9,14 @@
     "test": "jest",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "format": "prettier --write \"src/**/*.{ts,html,css,scss}\""
+    "format": "prettier --write \"src/**/*.{ts,html,css,scss}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,html,scss}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -43,8 +50,10 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-typescript-enum": "^2.1.0",
     "eslint-plugin-unused-imports": "^4.0.0",
+    "husky": "^9.1.6",
     "jest": "^29.7.0",
     "jest-preset-angular": "^14.2.4",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "typescript": "~5.4.2"
   }
