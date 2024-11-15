@@ -1,7 +1,7 @@
 {
   "root": true,
-  "extends": ["plugin:tailwindcss/recommended"],
-  "ignorePatterns": ["projects/**/*"],
+  "extends": [],
+  "ignorePatterns": [ "*.scss"],
   "parser": "@babel/eslint-parser",  
   "parserOptions": {
     "requireConfigFile": false
@@ -76,17 +76,6 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {}
-    },
-    {
-      "files": ["*.scss"],
-      "rules": {
-        "postcss/unknownAtRules": [
-          "error",
-          {
-            "ignoreAtRules": ["@tailwind", "@apply", "@layer"]
-          }
-        ]
-      }
     }
   ]
 }

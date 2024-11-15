@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './styles/fonts';
+
+html,
+body {
+  font-family: LibreFranklin;
+}
