@@ -1,10 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { WebcamComponent } from './features/camera-panel/components/webcam/webcam.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
+    Object.defineProperty(navigator, 'mediaDevices', {
+      value: {
+        getUserMedia: jest.fn().mockResolvedValue({ getTracks: jest.fn() }),
+      },
+      writable: true,
+    });
+
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, WebcamComponent],
     }).compileComponents();
   });
 
