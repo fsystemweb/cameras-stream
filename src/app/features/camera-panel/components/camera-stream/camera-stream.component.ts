@@ -25,6 +25,7 @@ export class CameraStreamComponent implements AfterViewInit {
 
   startStream(): void {
     const video = this.videoElement().nativeElement;
+    video.muted = true;
     const hls = new Hls();
     const streamUrl = this.streamUrl();
 
