@@ -11,7 +11,7 @@ import { ListItemComponent } from '../list-item/list-item.component';
 export class CameraListComponent {
   cameras: CameraItem[] = [
     {
-      title: 'My webcam',
+      title: 'My Webcam',
       id: 'cam1',
       localWebcam: true,
     },
