@@ -1,4 +1,14 @@
 <div class="grid grid-cols-4 gap-4 h-full">
+  @for (camera of camerasActive; track camera.id) {
+    @if (camera.localWebcam) {
+      <div class="rounded bg-slate-800 contents"><app-webcam /></div>
+    } @else {
+      <div class="rounded bg-slate-800 contents">
+        <app-camera-stream [streamUrl]="camera.streamUrl || ''" />
+      </div>
+    }
+  }
+  <!--
   <div class="rounded bg-slate-800 contents"><app-webcam /></div>
   <div class="rounded bg-slate-800 contents">
     <app-camera-stream streamUrl="https://ztnr.rtve.es/ztnr/1694255.m3u8" />
@@ -35,5 +45,5 @@
     <app-camera-stream
       streamUrl="https://rakuten-guardian-1-ie.samsung.wurl.tv/playlist.m3u8"
     />
-  </div>
-</div>
+  </div>  
+--></div>

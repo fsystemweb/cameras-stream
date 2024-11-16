@@ -1,13 +1,12 @@
-<li class="flex items-center gap-3 group">
+<li
+  class="flex items-center gap-3 group border-solid border-2 border-grey-400 rounded p-2 hover:bg-slate-400"
+>
   <input
     type="checkbox"
-    id="task-1"
-    class="h-5 w-5 text-gray-600 border-gray-300 focus:ring-gray-500 rounded"
+    (change)="onCheckboxChange($event)"
+    class="cursor-pointer h-5 w-5 text-gray-600 border-gray-300 focus:ring-gray-500 rounded"
   />
-  <label
-    for="task-1"
-    class="text-gray-700 group-hover:text-gray-900 cursor-pointer flex-grow"
-  >
+  <label for="task-1" class="text-gray-700 group-hover:text-gray-900 flex-grow">
     {{ cameraItem().title }}
   </label>
 </li>
