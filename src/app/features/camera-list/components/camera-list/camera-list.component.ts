@@ -48,8 +48,15 @@ export class CameraListComponent {
       localWebcam: false,
     },
     {
-      title: 'Clan TV',
+      title: 'SABC News',
       id: 'cam7',
+      streamUrl:
+        'https://sabconetanw.cdn.mangomolo.com/news/smil:news.stream.smil/chunklist_b250000_t64MjQwcA==.m3u8',
+      localWebcam: false,
+    },
+    {
+      title: 'Clan TV',
+      id: 'cam8',
       streamUrl:
         'https://rtvelivestream-clnx.rtve.es/rtvesec/clan/clan_main_720.m3u8',
       localWebcam: false,
