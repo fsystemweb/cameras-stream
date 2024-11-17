@@ -1,9 +1,11 @@
 export class CameraItem {
-  selected: boolean;
+  id: string;
   title: string;
+  localWebcam: boolean = false;
+  streamUrl?: string;
 
-  constructor(selected: boolean, title: string) {
-    this.selected = selected;
+  constructor(id: string, title: string) {
+    this.id = id;
     this.title = title;
   }
 }

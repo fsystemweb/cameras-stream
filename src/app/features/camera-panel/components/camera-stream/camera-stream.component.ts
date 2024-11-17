@@ -2,10 +2,12 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   input,
   viewChild,
 } from '@angular/core';
 import Hls from 'hls.js';
+import { StreamHelperService } from '../../services/stream-helper.service';
 
 @Component({
   selector: 'app-camera-stream',
@@ -14,6 +16,8 @@ import Hls from 'hls.js';
   imports: [],
 })
 export class CameraStreamComponent implements AfterViewInit {
+  private streamHelperService = inject(StreamHelperService);
+
   streamUrl = input.required<string>();
 
   videoElement =
@@ -25,16 +29,10 @@ export class CameraStreamComponent implements AfterViewInit {
 
   startStream(): void {
     const video = this.videoElement().nativeElement;
+    video.muted = true;
     const hls = new Hls();
     const streamUrl = this.streamUrl();
 
-    if (Hls.isSupported()) {
-      hls.loadSource(streamUrl);
-      hls.attachMedia(video);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = streamUrl;
-    } else {
-      console.error('HLS not supported in this browser');
-    }
+    this.streamHelperService.startStream(hls, video, streamUrl);
   }
 }

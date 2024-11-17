@@ -19,6 +19,7 @@ export class WebcamComponent {
       .getUserMedia({ video: true })
       .then((stream) => {
         const video = this.videoElement().nativeElement;
+        video.muted = true;
         video.srcObject = stream;
         video.play();
       })
