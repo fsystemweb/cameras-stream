@@ -11,6 +11,12 @@ export class ListItemComponent {
   private activeCamerasService = inject(ActiveCamerasService);
   cameraItem = input.required<CameraItem>();
 
+  webcamPermission = false;
+
+  constructor() {
+    this.checkCameraPermission();
+  }
+
   onCheckboxChange(event: Event): void {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
@@ -18,5 +24,16 @@ export class ListItemComponent {
     } else {
       this.activeCamerasService.removeCamera(this.cameraItem());
     }
+  }
+
+  private checkCameraPermission(): void {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then(() => {
+        this.webcamPermission = true;
+      })
+      .catch(() => {
+        this.webcamPermission = false;
+      });
   }
 }
