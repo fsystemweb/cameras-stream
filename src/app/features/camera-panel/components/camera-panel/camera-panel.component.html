@@ -11,16 +11,20 @@
     </div>
   } @else {
     <div
-      class="min-h-screen flex flex-wrap justify-center gap-2"
+      class="h-[100%] flex text-center items-center justify-center gap-2"
       [ngClass]="getGridClass()"
     >
       @for (camera of camerasActive; track camera.id) {
         @if (camera.localWebcam) {
-          <div class="rounded-3xl bg-slate-800">
+          <div
+            class="rounded-3xl bg-slate-800 h-full flex text-center items-center justify-center"
+          >
             <app-webcam />
           </div>
         } @else {
-          <div class="rounded-3xl bg-slate-800">
+          <div
+            class="rounded-3xl bg-slate-800 h-full flex text-center items-center justify-center"
+          >
             <app-camera-stream [streamUrl]="camera.streamUrl || ''" />
           </div>
         }

@@ -33,10 +33,10 @@ export class CameraPanelComponent {
       return 'grid grid-cols-1';
     } else if (length === 2) {
       return 'grid grid-cols-2';
-    } else if (length <= 4) {
-      return 'grid grid-cols-2 gap-2';
+    } else if (length <= 6) {
+      return 'grid grid-cols-3';
     } else {
-      return 'grid grid-cols-4 gap-2';
+      return 'grid grid-cols-4';
     }
   }
 }
