@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { Component, ElementRef, input, viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-webcam',
@@ -9,6 +9,7 @@ import { Component, ElementRef, viewChild } from '@angular/core';
 export class WebcamComponent {
   videoElement =
     viewChild.required<ElementRef<HTMLVideoElement>>('videoElement');
+  id = input.required<string>();
 
   constructor() {
     this.startWebcam();

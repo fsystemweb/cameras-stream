@@ -19,13 +19,20 @@
           <div
             class="rounded-3xl bg-slate-800 h-full flex text-center items-center justify-center"
           >
-            <app-webcam />
+            <app-camera-container [camera]="camera">
+              <app-webcam [id]="camera.id" />
+            </app-camera-container>
           </div>
         } @else {
           <div
             class="rounded-3xl bg-slate-800 h-full flex text-center items-center justify-center"
           >
-            <app-camera-stream [streamUrl]="camera.streamUrl || ''" />
+            <app-camera-container [camera]="camera">
+              <app-camera-stream
+                [streamUrl]="camera.streamUrl || ''"
+                [id]="camera.id"
+              />
+            </app-camera-container>
           </div>
         }
       }

@@ -5,12 +5,18 @@ import { CameraStreamComponent } from '../camera-stream/camera-stream.component'
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
+import { CameraContainerComponent } from '../camera-container/camera-container.component';
 
 @Component({
   selector: 'app-camera-panel',
   standalone: true,
   templateUrl: './camera-panel.component.html',
-  imports: [CommonModule, WebcamComponent, CameraStreamComponent],
+  imports: [
+    CommonModule,
+    WebcamComponent,
+    CameraStreamComponent,
+    CameraContainerComponent,
+  ],
 })
 export class CameraPanelComponent {
   private activeCamerasService = inject(ActiveCamerasService);
