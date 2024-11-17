@@ -22,9 +22,9 @@ export class CameraListComponent {
       localWebcam: false,
     },
     {
-      title: 'CGTN Español',
+      title: 'Al Jazeera',
       id: 'cam3',
-      streamUrl: 'https://news.cgtn.com/resource/live/espanol/cgtn-e.m3u8',
+      streamUrl: 'https://live-hls-web-aja.getaj.net/AJA/index.m3u8',
       localWebcam: false,
     },
     {

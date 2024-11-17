@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, WritableSignal } from '@angular/core';
 import Hls from 'hls.js';
 import { ToastrService } from 'ngx-toastr';
 
@@ -23,6 +23,15 @@ export class StreamHelperService {
     } else {
       this.toastr.error('HLS not supported in this browser');
     }
+  }
+
+  finishLoading(
+    hlsInstance: Hls,
+    booleanSignal: WritableSignal<boolean>,
+  ): void {
+    hlsInstance.on(Hls.Events.BUFFER_APPENDED, () => {
+      booleanSignal.set(false);
+    });
   }
 
   private errorMonitor(hlsInstance: Hls): void {

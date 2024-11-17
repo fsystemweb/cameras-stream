@@ -67,8 +67,9 @@ This process ensures that code quality is maintained and reduces the chances of 
 - [x] Add tailwind
 - [x] Create Layout
 - [x] Create Stream handler
-- [ ] Add Snapshot feature
-- [ ] Notification Service
+- [x] Add Snapshot feature
+- [x] Notification Service
+- [x] Handle errors
+- [ ] Add spinner
 - [ ] Add Edit list
-- [ ] Handle errors
 - [ ] Update readme
