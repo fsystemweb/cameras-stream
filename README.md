@@ -3,13 +3,14 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
 ## Libraries
- - Angular 18
- - Node 20.14.0
- - Jest (Test suite)
- - Eslint (Code smell checker)
- - Prettier (Code formatter)
- - Husky (Hook handler)
- - Tailwind (Styling utility)
+
+- Angular 18
+- Node 20.14.0
+- Jest (Test suite)
+- Eslint (Code smell checker)
+- Prettier (Code formatter)
+- Husky (Hook handler)
+- Tailwind (Styling utility)
 
 ## Development server
 
@@ -33,17 +34,21 @@ Run `npm run test` to execute the unit tests.
 - Run `npm run format` to execute prettier, and format your code.
 
 ## Architecture
- For styling the app, we use Tailwind because it speeds up the styling process.
 
- We use this tools to keep the project clean.
+For styling the app, we use Tailwind because it speeds up the styling process.
+
+We use this tools to keep the project clean.
 
 ### Husky
+
 **Husky** is a tool that helps you run scripts at various stages of the Git workflow, such as pre-commit or pre-push. It ensures that certain tasks like linting and formatting are executed before committing code, helping maintain consistent code quality across your project.
 
 ### ESLint
+
 **ESLint** is a static code analysis tool for identifying and fixing problems in JavaScript/TypeScript code. It helps enforce coding standards and best practices, preventing potential errors and improving code quality, you could check the **eslintrc.json** to see all the clean code rules we are using.
 
 ### Prettier
+
 **Prettier** is an opinionated code formatter that automatically formats code to ensure consistency in style. It supports a wide range of languages and ensures that the codebase remains clean and readable without manual formatting.
 
 ### GitHub Actions
@@ -56,11 +61,14 @@ This process ensures that code quality is maintained and reduces the chances of 
 
 - [x] Add Github actions
 - [x] Install jest test suite
-- [x] Add eslint 
-- [x] Add prettier 
+- [x] Add eslint
+- [x] Add prettier
 - [x] Add husky
-- [x] Add tailwind 
-- [ ] Create Layout
-- [ ] Create Stream handler
+- [x] Add tailwind
+- [x] Create Layout
+- [x] Create Stream handler
 - [ ] Add Snapshot feature
+- [ ] Notification Service
+- [ ] Add Edit list
+- [ ] Handle errors
 - [ ] Update readme
