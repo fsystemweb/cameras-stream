@@ -1,4 +1,5 @@
-import { Component, ElementRef, input, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, input, viewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-webcam',
@@ -7,6 +8,8 @@ import { Component, ElementRef, input, viewChild } from '@angular/core';
   imports: [],
 })
 export class WebcamComponent {
+  private toastr = inject(ToastrService);
+
   videoElement =
     viewChild.required<ElementRef<HTMLVideoElement>>('videoElement');
   id = input.required<string>();
@@ -25,7 +28,7 @@ export class WebcamComponent {
         video.play();
       })
       .catch((err) => {
-        console.error('Error accessing webcam:', err);
+        this.toastr.error('Error accessing webcam', err);
       });
   }
 }
