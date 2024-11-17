@@ -1,0 +1,31 @@
+<div class="relative">
+  <div class="absolute top-0 left-0 z-10 text-white p-1 bg-black">
+    <span>{{ camera().title }}</span>
+  </div>
+  <ng-content></ng-content>
+  <div class="relative">
+    <div class="flex justify-center items-center">
+      <button
+        (click)="takeSnapshot()"
+        class="flex item-center bg-blue-500 text-white font-semibold py-1 px-2 rounded shadow hover:bg-blue-600 transition duration-200 ease-in-out"
+      >
+        <img
+          src="/assets/icons/camera.svg"
+          alt="camera"
+          width="16"
+          class="mr-1 mt-1"
+        />
+        Take Snapshot
+      </button>
+    </div>
+
+    <a
+      [href]="snapshotUrls"
+      download="snapshot-{{ camera().title }}.jpg"
+      class="hidden"
+      #fileDownload
+      >Download Snapshot</a
+    >
+  </div>
+  <canvas #canvas class="hidden"></canvas>
+</div>
