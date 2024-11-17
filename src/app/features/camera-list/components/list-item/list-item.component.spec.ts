@@ -1,12 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListItemComponent } from './list-item.component';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
+import { of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
-// Mock the ActiveCamerasService
 class MockActiveCamerasService {
   addCamera = jest.fn();
   removeCamera = jest.fn();
+}
+
+class MockToastrService {
+  info(message: string) {
+    return of(true);
+  }
 }
 
 describe('ListItemComponent', () => {
@@ -27,6 +36,7 @@ describe('ListItemComponent', () => {
       imports: [ListItemComponent],
       providers: [
         { provide: ActiveCamerasService, useValue: mockActiveCamerasService },
+        { provide: ToastrService, useClass: MockToastrService },
       ],
     }).compileComponents();
   });

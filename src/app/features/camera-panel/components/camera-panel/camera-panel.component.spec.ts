@@ -25,14 +25,14 @@ describe('CameraPanelComponent', () => {
   let activeCamerasServiceMock: jest.Mocked<ActiveCamerasService>;
   beforeEach(async () => {
     activeCamerasServiceMock = {
-      getCameras$: jest.fn().mockReturnValue(of([])), // Mock implementation
+      getCameras$: jest.fn().mockReturnValue(of([])),
     } as unknown as jest.Mocked<ActiveCamerasService>;
 
     await TestBed.configureTestingModule({
       imports: [CameraPanelComponent, WebcamComponent, CameraStreamComponent],
       providers: [
         { provide: ActiveCamerasService, useValue: activeCamerasServiceMock },
-        { provide: ToastrService, useClass: MockToastrService }, // Use the mock service
+        { provide: ToastrService, useClass: MockToastrService },
       ],
     }).compileComponents();
 

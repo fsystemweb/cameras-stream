@@ -1,5 +1,6 @@
 import { Component, ElementRef, inject, input, viewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { NavigatorHelperService } from '../../../../shared/services/navigator-helper.service';
 
 @Component({
   selector: 'app-webcam',
@@ -8,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   imports: [],
 })
 export class WebcamComponent {
+  private navigatorHelperService = inject(NavigatorHelperService);
   private toastr = inject(ToastrService);
 
   videoElement =
@@ -19,7 +21,8 @@ export class WebcamComponent {
   }
 
   startWebcam(): void {
-    navigator.mediaDevices
+    this.navigatorHelperService
+      .getMediaService()
       .getUserMedia({ video: true })
       .then((stream) => {
         const video = this.videoElement().nativeElement;
