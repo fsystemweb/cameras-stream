@@ -1,10 +1,13 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import Hls from 'hls.js';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StreamHelperService {
+  private toastr = inject(ToastrService);
+
   startStream(
     hlsInstance: Hls,
     video: HTMLVideoElement,
@@ -18,28 +21,20 @@ export class StreamHelperService {
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
       video.src = streamUrl;
     } else {
-      console.error('HLS not supported in this browser');
+      this.toastr.error('HLS not supported in this browser');
     }
   }
 
   private errorMonitor(hlsInstance: Hls): void {
     hlsInstance.on(Hls.Events.ERROR, (event, data) => {
-      const { type, details, fatal } = data;
+      const { details, fatal } = data;
 
-      const ERROR_PREFIX = 'HLS.js error detected:';
+      const ERROR_PREFIX = 'HLS.js error detected: ';
 
       if (fatal) {
-        console.error(ERROR_PREFIX, {
-          type,
-          details,
-          fatal,
-        });
+        this.toastr.error(ERROR_PREFIX + details.toString());
       } else {
-        console.warn(ERROR_PREFIX, {
-          type,
-          details,
-          fatal,
-        });
+        this.toastr.warning(ERROR_PREFIX + details.toString());
       }
     });
   }

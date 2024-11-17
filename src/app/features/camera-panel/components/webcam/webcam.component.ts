@@ -1,4 +1,6 @@
-import { Component, ElementRef, input, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, input, viewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { NavigatorHelperService } from '../../../../shared/services/navigator-helper.service';
 
 @Component({
   selector: 'app-webcam',
@@ -7,6 +9,9 @@ import { Component, ElementRef, input, viewChild } from '@angular/core';
   imports: [],
 })
 export class WebcamComponent {
+  private navigatorHelperService = inject(NavigatorHelperService);
+  private toastr = inject(ToastrService);
+
   videoElement =
     viewChild.required<ElementRef<HTMLVideoElement>>('videoElement');
   id = input.required<string>();
@@ -16,7 +21,8 @@ export class WebcamComponent {
   }
 
   startWebcam(): void {
-    navigator.mediaDevices
+    this.navigatorHelperService
+      .getMediaService()
       .getUserMedia({ video: true })
       .then((stream) => {
         const video = this.videoElement().nativeElement;
@@ -25,7 +31,7 @@ export class WebcamComponent {
         video.play();
       })
       .catch((err) => {
-        console.error('Error accessing webcam:', err);
+        this.toastr.error('Error accessing webcam', err);
       });
   }
 }

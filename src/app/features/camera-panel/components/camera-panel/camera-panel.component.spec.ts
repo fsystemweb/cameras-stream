@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { CameraPanelComponent } from './camera-panel.component';
@@ -6,23 +8,31 @@ import { ActiveCamerasService } from '../../../../shared/services/active-cameras
 import { WebcamComponent } from '../webcam/webcam.component';
 import { CameraStreamComponent } from '../camera-stream/camera-stream.component';
 import { CameraItem } from '../../../camera-list/models/camera-item';
+import { ToastrService } from 'ngx-toastr';
 
 const mockCameras: CameraItem[] = [
   { id: '1', title: 'title1', localWebcam: false },
   { id: '2', title: 'title2', localWebcam: false },
 ];
 
+class MockToastrService {
+  error(message: string) {
+    return of(true);
+  }
+}
+
 describe('CameraPanelComponent', () => {
   let activeCamerasServiceMock: jest.Mocked<ActiveCamerasService>;
   beforeEach(async () => {
     activeCamerasServiceMock = {
-      getCameras$: jest.fn().mockReturnValue(of([])), // Mock implementation
+      getCameras$: jest.fn().mockReturnValue(of([])),
     } as unknown as jest.Mocked<ActiveCamerasService>;
 
     await TestBed.configureTestingModule({
       imports: [CameraPanelComponent, WebcamComponent, CameraStreamComponent],
       providers: [
         { provide: ActiveCamerasService, useValue: activeCamerasServiceMock },
+        { provide: ToastrService, useClass: MockToastrService },
       ],
     }).compileComponents();
 
