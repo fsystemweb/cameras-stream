@@ -1,5 +1,23 @@
 # CamerasStream
 
+This project leverages the latest Angular features to enhance application performance, including:
+
+- **Input Signals**: Efficiently manage reactive data flows.
+- **Dependency Injection with `Inject`**: Modern and flexible service injection.
+- **Optimized Change Detection**: All components utilize `changeDetection: ChangeDetectionStrategy.OnPush` to prevent performance leaks.
+- **Standalone Components**: Streamlined architecture for better modularity.
+
+## Snapshot Solution
+
+For capturing snapshots, we use **plain TypeScript** along with the **Canvas API**, ensuring compatibility with all modern browsers.
+
+## Stream Handling
+
+To handle video streams, the solution integrates:
+
+- **IPTV**: Free access to stream URLs is sourced from the IPTV repository. [IPTV Org](https://github.com/iptv-org/iptv)
+- **HLS (HTTP Live Streaming)**: Enables smooth video playback on various devices and browsers.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
 ## Libraries
@@ -11,6 +29,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Prettier (Code formatter)
 - Husky (Hook handler)
 - Tailwind (Styling utility)
+- HLS
+- Toast Notification
+
+# Getting Started
+
+To set up the project for the first time:
+
+1. **Prerequisites**: Ensure you have **Node.js (v20)** installed.
+
+2. **Install Dependencies**:  
+   Run the following command to install the required packages:  
+   ```bash
+   npm install
 
 ## Development server
 
@@ -70,6 +101,9 @@ This process ensures that code quality is maintained and reduces the chances of 
 - [x] Add Snapshot feature
 - [x] Notification Service
 - [x] Handle errors
-- [ ] Add spinner
+- [x] Add spinner
 - [ ] Add Edit list
-- [ ] Update readme
+- [x] Update readme
+
+### Legal
+No video files are stored in this repository. The repository simply contains user-submitted links to publicly available video stream URLs, which to the best of our knowledge have been intentionally made publicly by the copyright holders. If any links in these playlists infringe on your rights as a copyright holder, they may be removed by sending a pull request or opening an issue. However, note that we have no control over the destination of the link, and just removing the link from the playlist will not remove its contents from the web. Note that linking does not directly infringe copyright because no copy is made on the site providing the link, and thus this is not a valid reason to send a DMCA notice to GitHub. To remove this content from the web, you should contact the web host that's actually hosting the content (not GitHub, nor the maintainers of this repository).
