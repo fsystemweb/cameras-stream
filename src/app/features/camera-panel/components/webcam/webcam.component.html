@@ -5,4 +5,8 @@
   autoplay
   playsinline
   muted
+  [hidden]="this.loading()"
 ></video>
+@if (this.loading()) {
+  <app-spinner [display]="loading()" />
+}

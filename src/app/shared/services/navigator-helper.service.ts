@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal } from '@angular/core';
 
 const CAMERA_PERMISSION_KEY = 'webCamera';
 
@@ -17,5 +17,11 @@ export class NavigatorHelperService {
 
   getMediaService(): MediaDevices {
     return navigator.mediaDevices;
+  }
+
+  onLoading(video: HTMLVideoElement, loading: WritableSignal<boolean>): void {
+    video.onloadedmetadata = (): void => {
+      loading.set(false);
+    };
   }
 }
