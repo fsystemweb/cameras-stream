@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CameraItem } from '../../features/camera-list/models/camera-item';
+import { CameraItem } from '../models/camera-item';
 
 @Injectable({
   providedIn: 'root',

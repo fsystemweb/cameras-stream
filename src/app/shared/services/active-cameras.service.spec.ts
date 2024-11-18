@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ActiveCamerasService } from './active-cameras.service';
-import { CameraItem } from '../../features/camera-list/models/camera-item';
+import { CameraItem } from '../models/camera-item';
 
 describe('ActiveCamerasService', () => {
   let service: ActiveCamerasService;

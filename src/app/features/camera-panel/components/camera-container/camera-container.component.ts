@@ -5,7 +5,7 @@ import {
   input,
   viewChild,
 } from '@angular/core';
-import { CameraItem } from '../../../camera-list/models/camera-item';
+import { CameraItem } from '../../../../shared/models/camera-item';
 
 @Component({
   selector: 'app-camera-container',

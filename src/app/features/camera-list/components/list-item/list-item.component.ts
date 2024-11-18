@@ -6,7 +6,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { CameraItem } from '../../models/camera-item';
+import { CameraItem } from '../../../../shared/models/camera-item';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 import { NavigatorHelperService } from '../../../../shared/services/navigator-helper.service';
 import { ToastrService } from 'ngx-toastr';

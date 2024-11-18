@@ -7,7 +7,7 @@ import { ActiveCamerasService } from '../../../../shared/services/active-cameras
 
 import { WebcamComponent } from '../webcam/webcam.component';
 import { CameraStreamComponent } from '../camera-stream/camera-stream.component';
-import { CameraItem } from '../../../camera-list/models/camera-item';
+import { CameraItem } from '../../../../shared/models/camera-item';
 import { ToastrService } from 'ngx-toastr';
 
 const mockCameras: CameraItem[] = [

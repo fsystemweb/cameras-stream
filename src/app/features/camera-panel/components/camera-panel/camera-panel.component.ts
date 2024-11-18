@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { WebcamComponent } from '../webcam/webcam.component';
-import { CameraItem } from '../../../camera-list/models/camera-item';
+import { CameraItem } from '../../../../shared/models/camera-item';
 import { CameraStreamComponent } from '../camera-stream/camera-stream.component';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

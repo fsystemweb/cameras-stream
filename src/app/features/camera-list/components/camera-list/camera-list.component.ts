@@ -5,7 +5,7 @@ import {
   DestroyRef,
   inject,
 } from '@angular/core';
-import { CameraItem } from '../../models/camera-item';
+import { CameraItem } from '../../../../shared/models/camera-item';
 import { ListItemComponent } from '../list-item/list-item.component';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

@@ -14,7 +14,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CameraItem } from '../../../camera-list/models/camera-item';
+import { CameraItem } from '../../../../shared/models/camera-item';
 import { StreamHelperService } from '../../../../shared/services/stream-helper.service';
 import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
 import { ToastrService } from 'ngx-toastr';
