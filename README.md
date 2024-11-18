@@ -40,10 +40,10 @@ To set up the project for the first time:
 
 1. **Prerequisites**: Ensure you have **Node.js (v20)** installed.
 
-2. **Install Dependencies**:  
-   Run the following command to install the required packages:  
+2. **Install Dependencies and Start Dev serve**:  
+   Run the following command to install the required packages and start the dev serve, execute this command only one time. After installs the packages you can use `npm run start`:  
    ```bash
-   npm install
+   npm run dummy-start
 
 ## Development server
 

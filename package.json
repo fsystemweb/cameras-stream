@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "format": "prettier --write \"src/**/*.{ts,html,css,scss}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dummy-start": "npm i && npm start"
   },
   "lint-staged": {
     "*.{ts,html,scss}": [
