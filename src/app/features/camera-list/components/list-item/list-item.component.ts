@@ -1,4 +1,11 @@
-import { Component, effect, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  effect,
+  inject,
+  input,
+} from '@angular/core';
 import { CameraItem } from '../../models/camera-item';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 import { NavigatorHelperService } from '../../../../shared/services/navigator-helper.service';
@@ -8,10 +15,12 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-list-item',
   standalone: true,
   templateUrl: './list-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListItemComponent {
   private activeCamerasService = inject(ActiveCamerasService);
   private navigatorHelperService = inject(NavigatorHelperService);
+  private ref = inject(ChangeDetectorRef);
   private toastr = inject(ToastrService);
 
   cameraItem = input.required<CameraItem>();
@@ -47,6 +56,7 @@ export class ListItemComponent {
         this.navigatorHelperService.setCameraPermissionForNextSession(
           this.webcamPermission ?? false,
         );
+        this.ref.markForCheck();
       });
   }
 
@@ -65,6 +75,7 @@ export class ListItemComponent {
 
     if (isPermissionStoredTrue) {
       this.webcamPermission = isPermissionStoredTrue;
+      this.ref.markForCheck();
       return;
     }
 

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   inject,
@@ -15,6 +16,7 @@ import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.
   standalone: true,
   templateUrl: './webcam.component.html',
   imports: [SpinnerComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WebcamComponent {
   private navigatorHelperService = inject(NavigatorHelperService);

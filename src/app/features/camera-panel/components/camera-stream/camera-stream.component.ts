@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   inject,
@@ -16,6 +17,7 @@ import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.
   standalone: true,
   templateUrl: './camera-stream.component.html',
   imports: [SpinnerComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CameraStreamComponent implements AfterViewInit {
   private streamHelperService = inject(StreamHelperService);

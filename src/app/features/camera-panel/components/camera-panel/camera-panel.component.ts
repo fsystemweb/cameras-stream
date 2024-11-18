@@ -1,4 +1,10 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  inject,
+} from '@angular/core';
 import { WebcamComponent } from '../webcam/webcam.component';
 import { CameraItem } from '../../../camera-list/models/camera-item';
 import { CameraStreamComponent } from '../camera-stream/camera-stream.component';
@@ -17,10 +23,12 @@ import { CameraContainerComponent } from '../camera-container/camera-container.c
     CameraStreamComponent,
     CameraContainerComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CameraPanelComponent {
   private activeCamerasService = inject(ActiveCamerasService);
   private destroyRef = inject(DestroyRef);
+  private ref = inject(ChangeDetectorRef);
 
   camerasActive: CameraItem[] = [];
 
@@ -30,6 +38,7 @@ export class CameraPanelComponent {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((cameras) => {
         this.camerasActive = cameras;
+        this.ref.markForCheck();
       });
   }
 
