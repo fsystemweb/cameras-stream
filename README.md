@@ -20,8 +20,6 @@ To handle video streams, the solution integrates:
 - **IPTV**: Free access to stream URLs is sourced from the IPTV repository. [IPTV Org](https://github.com/iptv-org/iptv)
 - **HLS (HTTP Live Streaming)**: Enables smooth video playback on various devices and browsers.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
-
 ## Libraries
 
 - Angular 18
@@ -33,6 +31,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Tailwind (Styling utility)
 - HLS
 - Toast Notification
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
 # Getting Started
 
