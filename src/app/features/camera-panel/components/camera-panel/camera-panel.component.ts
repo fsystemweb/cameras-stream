@@ -37,7 +37,7 @@ export class CameraPanelComponent {
       .getCameras$()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((cameras) => {
-        this.camerasActive = cameras;
+        this.camerasActive = cameras.filter((item) => item.selected);
         this.ref.markForCheck();
       });
   }
