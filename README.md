@@ -68,9 +68,9 @@ Run `npm run test` to execute the unit tests.
 
 ## Architecture
 
-For styling the app, we use Tailwind because it speeds up the styling process.
+*For styling the app, we use Tailwind because it speeds up the styling process.
 
-We use this tools to keep the project clean.
+*We use these tools to keep the project clean.
 
 ### Husky
 
