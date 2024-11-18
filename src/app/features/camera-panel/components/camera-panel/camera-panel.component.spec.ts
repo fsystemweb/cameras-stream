@@ -11,7 +11,7 @@ import { CameraItem } from '../../../../shared/models/camera-item';
 import { ToastrService } from 'ngx-toastr';
 
 const mockCameras: CameraItem[] = [
-  { id: '1', title: 'title1', localWebcam: false },
+  { id: '1', title: 'title1', localWebcam: false, selected: true },
   { id: '2', title: 'title2', localWebcam: false },
 ];
 
@@ -51,7 +51,9 @@ describe('CameraPanelComponent', () => {
 
     fixture.detectChanges();
 
-    expect(component.camerasActive).toEqual(mockCameras);
+    expect(component.camerasActive).toEqual(
+      mockCameras.filter((cam) => cam.selected),
+    );
   });
 
   it('should return the correct grid class based on the number of cameras', () => {

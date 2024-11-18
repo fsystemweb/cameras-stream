@@ -46,6 +46,14 @@ export class ListItemComponent {
     }
   }
 
+  openDialog(): void {
+    if (this.cameraItem().selected) {
+      this.toastr.warning('Stop this stream execution before edit.');
+    } else {
+      this.displayEditCamera = true;
+    }
+  }
+
   private checkCameraPermission(): void {
     const mediaDevices = this.navigatorHelperService.getMediaService();
     mediaDevices
