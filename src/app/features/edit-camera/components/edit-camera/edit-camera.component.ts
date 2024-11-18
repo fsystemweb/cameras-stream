@@ -18,6 +18,7 @@ import { CameraItem } from '../../../camera-list/models/camera-item';
 import { StreamHelperService } from '../../../../shared/services/stream-helper.service';
 import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
 import { ToastrService } from 'ngx-toastr';
+import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 
 @Component({
   selector: 'app-edit-camera',
@@ -31,6 +32,7 @@ export class EditCameraComponent {
   private streamHelperService = inject(StreamHelperService);
   private ref = inject(ChangeDetectorRef);
   private toastr = inject(ToastrService);
+  private activeCamerasService = inject(ActiveCamerasService);
 
   isDialogOpen = model<boolean>(false);
   camera = input.required<CameraItem>();
@@ -58,7 +60,7 @@ export class EditCameraComponent {
       this.ref.markForCheck();
 
       if (validation) {
-        /* todo */
+        this.dispatchUpdateCamera();
       } else {
         this.toastr.error('Not valid stream url. Try a different.');
       }
@@ -82,5 +84,15 @@ export class EditCameraComponent {
     const streamUrl = this.cameraForm.controls['streamUrl'].value;
 
     return this.streamHelperService.validateStreamUrl(streamUrl);
+  }
+
+  private dispatchUpdateCamera(): void {
+    const newCamera = { ...this.camera() };
+    newCamera.title = this.cameraForm.controls['title'].value;
+    if (!this.camera().localWebcam) {
+      newCamera.streamUrl = this.cameraForm.controls['streamUrl'].value;
+    }
+    this.activeCamerasService.updateCamera(newCamera);
+    this.closeDialog();
   }
 }

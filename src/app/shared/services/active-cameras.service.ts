@@ -25,4 +25,13 @@ export class ActiveCamerasService {
   getCameras$(): Observable<CameraItem[]> {
     return this.dataSubject.asObservable();
   }
+
+  updateCamera(updatedCamera: CameraItem): void {
+    const currentData = this.dataSubject.value;
+
+    const updatedData = currentData.map((item) =>
+      item.id === updatedCamera.id ? { ...item, ...updatedCamera } : item,
+    );
+    this.dataSubject.next(updatedData);
+  }
 }

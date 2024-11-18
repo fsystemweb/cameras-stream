@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  inject,
+} from '@angular/core';
 import { CameraItem } from '../../models/camera-item';
 import { ListItemComponent } from '../list-item/list-item.component';
+import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-camera-list',
@@ -10,6 +18,10 @@ import { ListItemComponent } from '../list-item/list-item.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CameraListComponent {
+  private activeCamerasService = inject(ActiveCamerasService);
+  private destroyRef = inject(DestroyRef);
+  private ref = inject(ChangeDetectorRef);
+
   cameras: CameraItem[] = [
     {
       title: 'My Webcam',
@@ -63,4 +75,28 @@ export class CameraListComponent {
       localWebcam: false,
     },
   ];
+
+  constructor() {
+    this.updateCameras();
+  }
+
+  private updateCameras(): void {
+    this.activeCamerasService
+      .getCameras$()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((camerasUpdates) => {
+        this.cameras = this.cameras.map((existingCamera) => {
+          const updatedItem = camerasUpdates.find(
+            (newCamera) => newCamera.id === existingCamera.id,
+          );
+          if (updatedItem) {
+            return updatedItem;
+          } else {
+            return existingCamera;
+          }
+        });
+
+        this.ref.markForCheck();
+      });
+  }
 }

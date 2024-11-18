@@ -60,4 +60,25 @@ describe('ActiveCamerasService', () => {
       expect(cameras[0]).toEqual(camera);
     });
   });
+
+  it('should update a camera', () => {
+    const cameraToAdd: CameraItem = {
+      id: '1',
+      title: 'Camera 1',
+      localWebcam: false,
+    };
+    const cameraToUpdate: CameraItem = {
+      id: '1',
+      title: 'Updated Camera',
+      localWebcam: false,
+    };
+
+    service.addCamera(cameraToAdd);
+    service.updateCamera(cameraToUpdate);
+
+    service.getCameras$().subscribe((cameras) => {
+      expect(cameras.length).toBe(1);
+      expect(cameras[0]).toEqual(cameraToUpdate);
+    });
+  });
 });
