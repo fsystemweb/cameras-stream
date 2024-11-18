@@ -1,11 +1,12 @@
-<video [id]="id()" class="h-[85%] w-full" #videoElement autoplay playsinline muted [hidden]="this.loading()"></video>
-@if(this.loading()){
-<div class="h-48 w-48 flex justify-center items-center">
-    <img class="h-[25%] w-[25%]" src="assets/icons/infinite-spinner.svg" alt="spinner" />
-</div>
-
+<video
+  [id]="id()"
+  class="h-[85%] w-full"
+  #videoElement
+  autoplay
+  playsinline
+  muted
+  [hidden]="this.loading()"
+></video>
+@if (this.loading()) {
+  <app-spinner [display]="this.loading()" />
 }
-
-<!--
-        <app-spinner [display]="this.loading()" />
-    -->

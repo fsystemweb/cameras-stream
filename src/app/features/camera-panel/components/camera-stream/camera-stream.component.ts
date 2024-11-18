@@ -40,6 +40,6 @@ export class CameraStreamComponent implements AfterViewInit {
 
     this.streamHelperService.startStream(hls, video, streamUrl);
 
-    // this.streamHelperService.finishLoading(hls, this.loading);
+    this.streamHelperService.finishLoading(hls, this.loading);
   }
 }
