@@ -16,4 +16,9 @@
       <div class="w-3 h-3 bg-red-500 rounded-full"></div>
     }
   }
+  <button type="button" (click)="openDialog()">
+    <img src="/assets/icons/edit.svg" alt="edit" height="12px" />
+  </button>
 </li>
+
+<app-edit-camera [isDialogOpen]="displayEditCamera" [camera]="cameraItem()" />

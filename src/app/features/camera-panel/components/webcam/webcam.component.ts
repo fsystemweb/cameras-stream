@@ -4,6 +4,7 @@ import {
   ElementRef,
   inject,
   input,
+  OnDestroy,
   signal,
   viewChild,
 } from '@angular/core';
@@ -18,7 +19,7 @@ import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.
   imports: [SpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WebcamComponent {
+export class WebcamComponent implements OnDestroy {
   private navigatorHelperService = inject(NavigatorHelperService);
   private toastr = inject(ToastrService);
 
@@ -27,6 +28,8 @@ export class WebcamComponent {
 
   videoElement =
     viewChild.required<ElementRef<HTMLVideoElement>>('videoElement');
+
+  private mediaStream: MediaStream | null = null;
 
   constructor() {
     this.startWebcam();
@@ -42,9 +45,21 @@ export class WebcamComponent {
         video.muted = true;
         video.srcObject = stream;
         video.play();
+        this.mediaStream = stream;
       })
       .catch((err) => {
         this.toastr.error('Error accessing webcam', err);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.stopCamera();
+  }
+
+  private stopCamera(): void {
+    if (this.mediaStream) {
+      this.navigatorHelperService.stopCamera(this.mediaStream);
+      this.mediaStream = null;
+    }
   }
 }

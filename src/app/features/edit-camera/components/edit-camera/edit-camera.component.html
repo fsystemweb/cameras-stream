@@ -1,0 +1,64 @@
+@if (isDialogOpen()) {
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50"
+  >
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Camera</h2>
+      @if (loading) {
+        <app-spinner [display]="loading" />
+      } @else {
+        <form
+          [formGroup]="cameraForm"
+          (ngSubmit)="onSubmit()"
+          class="space-y-4"
+        >
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-600"
+              >Title</label
+            >
+            <input
+              id="title"
+              formControlName="title"
+              name="title"
+              type="text"
+              required
+              class="mt-1 text-black block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          @if (!camera().localWebcam) {
+            <div>
+              <label
+                for="streamUrl"
+                class="block text-sm font-medium text-gray-600"
+                >Stream url</label
+              >
+              <input
+                id="streamUrl"
+                formControlName="streamUrl"
+                name="streamUrl"
+                type="text"
+                class="mt-1 text-black block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          }
+          <div class="flex justify-end space-x-4">
+            <button
+              type="button"
+              (click)="closeDialog()"
+              class="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+              [disabled]="cameraForm.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+}

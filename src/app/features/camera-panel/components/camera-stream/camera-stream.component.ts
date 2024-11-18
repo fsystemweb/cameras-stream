@@ -5,12 +5,14 @@ import {
   ElementRef,
   inject,
   input,
+  OnDestroy,
   signal,
   viewChild,
 } from '@angular/core';
 import Hls from 'hls.js';
-import { StreamHelperService } from '../../services/stream-helper.service';
+
 import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.component';
+import { StreamHelperService } from '../../../../shared/services/stream-helper.service';
 
 @Component({
   selector: 'app-camera-stream',
@@ -19,7 +21,7 @@ import { SpinnerComponent } from '../../../../shared/components/spinner/spinner.
   imports: [SpinnerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CameraStreamComponent implements AfterViewInit {
+export class CameraStreamComponent implements AfterViewInit, OnDestroy {
   private streamHelperService = inject(StreamHelperService);
 
   streamUrl = input.required<string>();
@@ -30,6 +32,8 @@ export class CameraStreamComponent implements AfterViewInit {
   videoElement =
     viewChild.required<ElementRef<HTMLVideoElement>>('videoElement');
 
+  hls = new Hls();
+
   ngAfterViewInit(): void {
     this.startStream();
   }
@@ -37,11 +41,15 @@ export class CameraStreamComponent implements AfterViewInit {
   startStream(): void {
     const video = this.videoElement().nativeElement;
     video.muted = true;
-    const hls = new Hls();
+
     const streamUrl = this.streamUrl();
 
-    this.streamHelperService.startStream(hls, video, streamUrl);
+    this.streamHelperService.startStream(this.hls, video, streamUrl);
 
-    this.streamHelperService.finishLoading(hls, this.loading);
+    this.streamHelperService.finishLoading(this.hls, this.loading);
+  }
+
+  ngOnDestroy(): void {
+    this.streamHelperService.destroy(this.hls);
   }
 }
