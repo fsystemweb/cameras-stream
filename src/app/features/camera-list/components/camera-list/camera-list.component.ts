@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CameraItem } from '../../models/camera-item';
 import { ListItemComponent } from '../list-item/list-item.component';
 
@@ -7,6 +7,7 @@ import { ListItemComponent } from '../list-item/list-item.component';
   standalone: true,
   templateUrl: './camera-list.component.html',
   imports: [ListItemComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CameraListComponent {
   cameras: CameraItem[] = [

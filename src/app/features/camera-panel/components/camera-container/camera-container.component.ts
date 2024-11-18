@@ -1,4 +1,10 @@
-import { Component, ElementRef, input, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  input,
+  viewChild,
+} from '@angular/core';
 import { CameraItem } from '../../../camera-list/models/camera-item';
 
 @Component({
@@ -6,6 +12,7 @@ import { CameraItem } from '../../../camera-list/models/camera-item';
   standalone: true,
   templateUrl: './camera-container.component.html',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CameraContainerComponent {
   camera = input.required<CameraItem>();
