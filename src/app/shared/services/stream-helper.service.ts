@@ -34,6 +34,28 @@ export class StreamHelperService {
     });
   }
 
+  async validateStreamUrl(streamUrl: string): Promise<boolean> {
+    if (!Hls.isSupported()) return false;
+
+    const hls = new Hls();
+    hls.loadSource(streamUrl);
+
+    return new Promise((resolve) => {
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        hls.destroy();
+        resolve(true);
+      });
+      hls.on(Hls.Events.ERROR, () => {
+        hls.destroy();
+        resolve(false);
+      });
+    });
+  }
+
+  destroy(hlsInstance: Hls): void {
+    hlsInstance.destroy();
+  }
+
   private errorMonitor(hlsInstance: Hls): void {
     hlsInstance.on(Hls.Events.ERROR, (event, data) => {
       const { details, fatal } = data;

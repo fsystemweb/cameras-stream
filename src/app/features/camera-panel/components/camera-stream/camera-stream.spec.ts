@@ -9,11 +9,12 @@ import { ToastrService } from 'ngx-toastr';
 import { ElementRef, signal } from '@angular/core';
 import { of } from 'rxjs';
 import { CameraStreamComponent } from './camera-stream.component';
-import { StreamHelperService } from '../../services/stream-helper.service';
+import { StreamHelperService } from '../../../../shared/services/stream-helper.service';
 
 class MockStreamHelperService {
   startStream = jest.fn();
   finishLoading = jest.fn();
+  destroy = jest.fn();
 }
 
 class MockToastrService {
@@ -68,5 +69,11 @@ describe('CameraStreamComponent', () => {
 
     const video = component.videoElement().nativeElement;
     expect(video.muted).toBe(true);
+  });
+
+  it('should call destroy when the component is destroyed', () => {
+    fixture.destroy();
+
+    expect(streamHelperService.destroy).toHaveBeenCalled();
   });
 });

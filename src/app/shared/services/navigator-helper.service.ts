@@ -24,4 +24,10 @@ export class NavigatorHelperService {
       loading.set(false);
     };
   }
+
+  stopCamera(mediaStream: MediaStream): void {
+    if (mediaStream) {
+      mediaStream.getTracks().forEach((track) => track.stop());
+    }
+  }
 }

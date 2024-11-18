@@ -16,6 +16,7 @@ class MockNavigatorHelperService {
   }));
 
   onLoading = jest.fn();
+  stopCamera = jest.fn();
 }
 
 class MockToastrService {
@@ -73,5 +74,11 @@ describe('WebcamComponent', () => {
 
     const video = component.videoElement().nativeElement;
     expect(video.muted).toBe(true);
+  });
+
+  it('should call stopCamera when the component is destroyed', () => {
+    fixture.destroy();
+
+    expect(navigatorHelperService.stopCamera).toHaveBeenCalled();
   });
 });

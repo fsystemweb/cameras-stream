@@ -10,11 +10,13 @@ import { CameraItem } from '../../models/camera-item';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 import { NavigatorHelperService } from '../../../../shared/services/navigator-helper.service';
 import { ToastrService } from 'ngx-toastr';
+import { EditCameraComponent } from '../../../edit-camera/components/edit-camera/edit-camera.component';
 
 @Component({
   selector: 'app-list-item',
   standalone: true,
   templateUrl: './list-item.component.html',
+  imports: [EditCameraComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListItemComponent {
@@ -26,6 +28,8 @@ export class ListItemComponent {
   cameraItem = input.required<CameraItem>();
 
   webcamPermission: boolean | undefined = undefined;
+
+  displayEditCamera = false;
 
   constructor() {
     effect(() => {
