@@ -44,7 +44,9 @@ export class CameraPanelComponent {
 
   getGridClass(): string {
     const length = this.camerasActive.length;
-    if (length === 1) {
+    if (length === 0) {
+      return 'hidden';
+    } else if (length === 1) {
       return 'grid grid-cols-1';
     } else if (length === 2) {
       return 'grid grid-cols-2';
