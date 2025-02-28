@@ -13,7 +13,7 @@
     <div [ngClass]="getGridClass()" class="gap-4 p-4">
       @for (camera of camerasActive; track camera.id) {
         <div
-          class="rounded-lg shadow-lg bg-white p-4 transition-transform transform hover:scale-105"
+          class="rounded-lg shadow-lg bg-slate-800 p-4 transition-transform transform hover:scale-105"
         >
           @if (camera.localWebcam) {
             <app-camera-container [camera]="camera">
