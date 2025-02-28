@@ -9,5 +9,7 @@
   [hidden]="this.loading()"
 ></video>
 @if (this.loading()) {
-  <app-spinner [display]="this.loading()" />
+  <div class="flex items-center justify-center h-full">
+    <app-spinner [display]="loading()" />
+  </div>
 }
