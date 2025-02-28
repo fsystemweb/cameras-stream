@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href '/cameras-stream/'",
+    "build": "ng build --base-href='/cameras-stream/'",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "lint": "ng lint",

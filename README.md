@@ -1,6 +1,6 @@
 # CamerasStream
 
-Live Demo: https://cameras-stream.vercel.app/
+Live Demo: https://fsystemweb.github.io/cameras-stream/
 
 This project leverages the latest Angular features to enhance application performance, including:
 
