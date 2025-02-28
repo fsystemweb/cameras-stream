@@ -37,6 +37,7 @@ export class ActiveCamerasService {
       localWebcam: false,
       selected: false,
     },
+    /*
     {
       title: 'NBC News NOW',
       id: 'cam5',
@@ -51,7 +52,7 @@ export class ActiveCamerasService {
       streamUrl: 'https://rakuten-guardian-1-ie.samsung.wurl.tv/playlist.m3u8',
       localWebcam: false,
       selected: false,
-    },
+    },*/
     {
       title: 'SABC News',
       id: 'cam7',
