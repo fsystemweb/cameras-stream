@@ -1,6 +1,18 @@
 # CamerasStream
+[![Angular](https://img.shields.io/badge/Angular-18.0.0-DD0031?logo=angular&logoColor=white)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4.2-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.14-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![HLS.js](https://img.shields.io/badge/HLS.js-1.5.17-FF6F00?logo=video&logoColor=white)](https://github.com/video-dev/hls.js/)
+[![RxJS](https://img.shields.io/badge/RxJS-7.8.0-B7178C?logo=reactivex&logoColor=white)](https://rxjs.dev/)
+[![ESLint](https://img.shields.io/badge/ESLint-8.57.0-4B32C3?logo=eslint&logoColor=white)](https://eslint.org/)
+[![Prettier](https://img.shields.io/badge/Prettier-3.3.3-F7B93E?logo=prettier&logoColor=black)](https://prettier.io/)
+[![Jest](https://img.shields.io/badge/Jest-29.7.0-C21325?logo=jest&logoColor=white)](https://jestjs.io/)
+[![Husky](https://img.shields.io/badge/Husky-9.1.6-000000?logo=husky&logoColor=white)](https://typicode.github.io/husky)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Live Demo: https://fsystemweb.github.io/cameras-stream/
+🔗 **Live Demo:** [https://fsystemweb.github.io/cameras-stream/
+](https://fsystemweb.github.io/cameras-stream/
+)
 
 This project leverages the latest Angular features to enhance application performance, including:
 
@@ -19,20 +31,6 @@ To handle video streams, the solution integrates:
 
 - **IPTV**: Free access to stream URLs is sourced from the IPTV repository. [IPTV Org](https://github.com/iptv-org/iptv)
 - **HLS (HTTP Live Streaming)**: Enables smooth video playback on various devices and browsers.
-
-## Libraries
-
-- Angular 18
-- Node 20.14.0
-- Jest (Test suite)
-- Eslint (Code smell checker)
-- Prettier (Code formatter)
-- Husky (Hook handler)
-- Tailwind (Styling utility)
-- HLS
-- Toast Notification
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
 # Getting Started
 
