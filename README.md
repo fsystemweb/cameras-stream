@@ -1,4 +1,20 @@
-# CamerasStream
+<h1 align="center">CamerasStream</h1>
+
+<p align="center">
+  <img src="public/logo.avif" alt="logo" width="120px" height="120px"/>
+  <br>
+  <em>Angular Live Camera Stream App</em>
+  <br>
+</p>
+
+<p align="center">
+  <a href="https://fsystemweb.github.io/cameras-stream/"><strong>Cameras Stream Web</strong></a>
+  <br>
+</p>
+
+
+<div align="center">
+
 [![Angular](https://img.shields.io/badge/Angular-18.0.0-DD0031?logo=angular&logoColor=white)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4.2-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.14-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
@@ -10,9 +26,13 @@
 [![Husky](https://img.shields.io/badge/Husky-9.1.6-000000?logo=husky&logoColor=white)](https://typicode.github.io/husky)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-🔗 **Live Demo:** [https://fsystemweb.github.io/cameras-stream/
-](https://fsystemweb.github.io/cameras-stream/
-)
+</div>
+
+<hr>
+
+
+## Highlight architecture
+
 
 This project leverages the latest Angular features to enhance application performance, including:
 

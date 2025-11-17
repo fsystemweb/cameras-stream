@@ -62,10 +62,10 @@ export class ActiveCamerasService {
       selected: false,
     },
     {
-      title: 'Clan TV',
+      title: 'Nature Time',
       id: 'cam8',
       streamUrl:
-        'https://rtvelivestream-clnx.rtve.es/rtvesec/clan/clan_main_720.m3u8',
+        'https://amg00090-amgnaturetimeemea-rakuten.amagi.tv/playlist.m3u8',
       localWebcam: false,
       selected: false,
     },
