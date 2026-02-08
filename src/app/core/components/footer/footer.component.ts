@@ -7,5 +7,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-  footer = '2024 StreamCam Manager. All rights reserved.';
+  footer = `${new Date().getFullYear()} StreamCam Manager. All rights reserved.`;
 }
