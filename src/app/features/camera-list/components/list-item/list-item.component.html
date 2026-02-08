@@ -1,23 +1,49 @@
 <li
-  class="flex items-center gap-3 group border-solid border-2 border-grey-400 rounded p-2 hover:bg-slate-400"
+  class="flex items-center gap-3 group border border-slate-200 bg-white rounded-lg p-3 hover:bg-slate-50 transition-all duration-200 hover:shadow-sm hover:border-slate-300"
 >
   <input
     type="checkbox"
+    [id]="'checkbox-' + cameraItem().id"
     (change)="onCheckboxChange($event)"
-    class="cursor-pointer h-5 w-5 text-gray-600 border-gray-300 focus:ring-gray-500 rounded"
+    class="cursor-pointer h-4 w-4 text-primary border-slate-300 rounded focus:ring-primary"
   />
-  <label for="task-1" class="text-gray-700 group-hover:text-gray-900 flex-grow">
+  <label
+    [for]="'checkbox-' + cameraItem().id"
+    class="text-text font-medium text-sm group-hover:text-primary transition-colors flex-grow cursor-pointer select-none"
+  >
     {{ cameraItem().title }}
   </label>
   @if (cameraItem().localWebcam) {
     @if (webcamPermission) {
-      <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+      <div
+        class="w-2.5 h-2.5 bg-green-500 rounded-full shadow-sm ring-2 ring-green-100"
+      ></div>
     } @else {
-      <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+      <div
+        class="w-2.5 h-2.5 bg-red-500 rounded-full shadow-sm ring-2 ring-red-100"
+      ></div>
     }
   }
-  <button type="button" (click)="openDialog()">
-    <img src="assets/icons/edit.svg" alt="edit" height="12px" />
+  <button
+    type="button"
+    (click)="openDialog()"
+    class="text-slate-400 hover:text-primary transition-colors p-1 rounded-md hover:bg-blue-50"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-pencil"
+    >
+      <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+      <path d="m15 5 4 4" />
+    </svg>
   </button>
 </li>
 
