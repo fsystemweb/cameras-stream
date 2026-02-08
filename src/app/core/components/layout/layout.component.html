@@ -1,7 +1,11 @@
-<body class="container-xl flex h-screen flex-col bg-blue-200 text-gray-200">
-  <app-header />
-  <div class="grow bg-blue-200 flex-grow overflow-hidden">
-    <ng-content></ng-content>
-  </div>
-  <app-footer />
+<body
+  class="flex h-screen w-full flex-col bg-background text-text font-sans antialiased overflow-hidden"
+>
+  <app-header class="z-50" />
+  <main class="flex-1 overflow-auto bg-background p-4 md:p-6 lg:p-8">
+    <div class="mx-auto max-w-7xl h-full">
+      <ng-content></ng-content>
+    </div>
+  </main>
+  <app-footer class="z-50" />
 </body>

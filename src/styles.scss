@@ -6,5 +6,6 @@
 
 html,
 body {
-  font-family: LibreFranklin;
+  font-family: 'Fira Sans', sans-serif;
+  @apply bg-background text-text;
 }

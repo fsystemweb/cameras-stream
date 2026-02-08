@@ -1,20 +1,49 @@
 @if (isDialogOpen()) {
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4"
   >
-    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Edit Camera</h2>
+    <div
+      class="bg-surface shadow-xl ring-1 ring-slate-900/5 rounded-2xl p-6 w-full max-w-md animate-in fade-in zoom-in-95 duration-200"
+    >
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold text-text">Edit Camera</h2>
+        <button
+          (click)="closeDialog()"
+          class="text-slate-400 hover:text-text transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+      </div>
+
       @if (loading) {
-        <app-spinner [display]="loading" />
+        <div class="flex justify-center py-8">
+          <app-spinner [display]="loading" />
+        </div>
       } @else {
         <form
           [formGroup]="cameraForm"
           (ngSubmit)="onSubmit()"
-          class="space-y-4"
+          class="space-y-5"
         >
           <div>
-            <label for="title" class="block text-sm font-medium text-gray-600"
-              >Title</label
+            <label
+              for="title"
+              class="block text-sm font-medium text-text-muted mb-1.5"
+              >Camera Title</label
             >
             <input
               id="title"
@@ -22,39 +51,41 @@
               name="title"
               type="text"
               required
-              class="mt-1 text-black block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="block w-full px-4 py-2.5 bg-background border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-text placeholder:text-slate-400"
+              placeholder="e.g. Front Door"
             />
           </div>
           @if (!camera().localWebcam) {
             <div>
               <label
                 for="streamUrl"
-                class="block text-sm font-medium text-gray-600"
-                >Stream url</label
+                class="block text-sm font-medium text-text-muted mb-1.5"
+                >Stream URL</label
               >
               <input
                 id="streamUrl"
                 formControlName="streamUrl"
                 name="streamUrl"
                 type="text"
-                class="mt-1 text-black block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="block w-full px-4 py-2.5 bg-background border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-text placeholder:text-slate-400"
+                placeholder="rtsp://..."
               />
             </div>
           }
-          <div class="flex justify-end space-x-4">
+          <div class="flex justify-end gap-3 pt-2">
             <button
               type="button"
               (click)="closeDialog()"
-              class="px-4 py-2 text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300"
+              class="px-4 py-2 text-sm font-medium text-text-muted bg-slate-100 rounded-lg hover:bg-slate-200 hover:text-text transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+              class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-600 shadow-sm shadow-blue-500/30 transition-all"
               [disabled]="cameraForm.invalid"
             >
-              Submit
+              Save Changes
             </button>
           </div>
         </form>

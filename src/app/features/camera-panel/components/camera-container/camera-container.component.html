@@ -1,31 +1,49 @@
-<div class="relative">
-  <div class="absolute top-0 left-0 z-10 text-white p-1 bg-black">
-    <span>{{ camera().title }}</span>
-  </div>
-  <ng-content></ng-content>
-  <div class="relative">
-    <div class="flex justify-center items-center">
-      <button
-        (click)="takeSnapshot()"
-        class="flex items-center bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105"
-      >
-        <img
-          src="assets/icons/camera.svg"
-          alt="camera"
-          width="16"
-          class="mr-1"
-        />
-        Take Snapshot
-      </button>
-    </div>
-
-    <a
-      [href]="snapshotUrls"
-      download="snapshot-{{ camera().title }}.jpg"
-      class="hidden"
-      #fileDownload
-      >Download Snapshot</a
+<div class="relative flex flex-col h-full w-full group">
+  <div class="absolute top-3 left-3 z-20">
+    <span
+      class="bg-black/60 backdrop-blur-md text-white text-xs font-medium px-2.5 py-1 rounded-md shadow-sm border border-white/10"
     >
+      {{ camera().title }}
+    </span>
   </div>
+
+  <div class="flex-1 min-h-0 relative bg-black w-full overflow-hidden">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="bg-surface border-t border-slate-100 p-2 flex justify-end">
+    <button
+      (click)="takeSnapshot()"
+      class="flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-medium py-1.5 px-3 rounded-md hover:bg-slate-50 hover:text-primary hover:border-blue-200 transition-all shadow-sm focus:ring-2 focus:ring-primary/20"
+      title="Take Snapshot"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-camera"
+      >
+        <path
+          d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
+        />
+        <circle cx="12" cy="13" r="3" />
+      </svg>
+      <span>Snapshot</span>
+    </button>
+  </div>
+
+  <a
+    [href]="snapshotUrls"
+    download="snapshot-{{ camera().title }}.jpg"
+    class="hidden"
+    #fileDownload
+    >Download Snapshot</a
+  >
   <canvas #canvas class="hidden"></canvas>
 </div>

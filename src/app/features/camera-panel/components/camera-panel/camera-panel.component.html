@@ -1,26 +1,50 @@
 <div class="h-full w-full p-2">
   @if (camerasActive.length === 0) {
-    <div class="h-full w-full text-center flex items-center justify-center">
+    <div class="h-full w-full flex items-center justify-center p-8">
       <div
-        class="rounded-3xl bg-slate-800 h-full w-full flex items-center justify-center"
+        class="h-full w-full rounded-3xl border-2 border-dashed border-slate-300 bg-slate-50/50 flex flex-col items-center justify-center p-8 text-center"
       >
-        <span class="text-2xl text-white font-bold">
-          Choose one or more cameras from the list on the right
-        </span>
+        <div class="bg-blue-100 p-4 rounded-full mb-4 text-primary">
+          <!-- Icon placeholder using inline SVG -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-camera-off"
+          >
+            <path d="m2 2 20 20" />
+            <path d="M7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16" />
+            <path d="M9.5 4h5L17 7h3a2 2 0 0 1 2 2v7.5" />
+            <path d="M14.121 15.121A3 3 0 1 1 9.88 10.88" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-text mb-2">
+          No Cameras Selected
+        </h3>
+        <p class="text-text-muted max-w-sm">
+          Select one or more cameras from the list on the right to start
+          monitoring.
+        </p>
       </div>
     </div>
   } @else {
-    <div [ngClass]="getGridClass()" class="gap-4 p-4">
+    <div [ngClass]="getGridClass()" class="gap-4 p-4 h-full">
       @for (camera of camerasActive; track camera.id) {
         <div
-          class="rounded-lg shadow-lg bg-slate-800 p-4 transition-transform transform hover:scale-105"
+          class="rounded-xl shadow-sm bg-surface ring-1 ring-slate-200 overflow-hidden flex flex-col h-full"
         >
           @if (camera.localWebcam) {
-            <app-camera-container [camera]="camera">
+            <app-camera-container [camera]="camera" class="flex-1 min-h-0">
               <app-webcam [id]="camera.id" />
             </app-camera-container>
           } @else {
-            <app-camera-container [camera]="camera">
+            <app-camera-container [camera]="camera" class="flex-1 min-h-0">
               <app-camera-stream
                 [streamUrl]="camera.streamUrl || ''"
                 [id]="camera.id"
