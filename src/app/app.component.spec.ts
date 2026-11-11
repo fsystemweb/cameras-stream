@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { WebcamComponent } from './features/camera-panel/components/webcam/webcam.component';
+import { StreamHealthService } from './shared/services/stream-health.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,6 +14,12 @@ describe('AppComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [AppComponent, WebcamComponent],
+      providers: [
+        {
+          provide: StreamHealthService,
+          useValue: { start: jest.fn() },
+        },
+      ],
     }).compileComponents();
   });
 

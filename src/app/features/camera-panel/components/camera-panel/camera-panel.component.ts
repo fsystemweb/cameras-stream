@@ -49,11 +49,11 @@ export class CameraPanelComponent {
     } else if (length === 1) {
       return 'grid grid-cols-1';
     } else if (length === 2) {
-      return 'grid grid-cols-2';
+      return 'grid grid-cols-1 sm:grid-cols-2';
     } else if (length <= 6) {
-      return 'grid grid-cols-3';
+      return 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3';
     } else {
-      return 'grid grid-cols-4';
+      return 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4';
     }
   }
 }

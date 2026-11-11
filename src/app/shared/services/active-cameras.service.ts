@@ -85,6 +85,10 @@ export class ActiveCamerasService {
     return this.dataSubject.asObservable();
   }
 
+  getCamerasSnapshot(): CameraItem[] {
+    return this.dataSubject.value;
+  }
+
   updateCamera(updatedCamera: CameraItem): void {
     const currentData = this.dataSubject.value;
 

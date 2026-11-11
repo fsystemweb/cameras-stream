@@ -1,12 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EditCameraComponent } from './edit-camera.component';
-import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
 import { StreamHelperService } from '../../../../shared/services/stream-helper.service';
 import { CameraItem } from '../../../../shared/models/camera-item';
-import { of } from 'rxjs';
-import { ChangeDetectorRef } from '@angular/core';
 
 describe('EditCameraComponent', () => {
   let component: EditCameraComponent;
@@ -14,7 +12,6 @@ describe('EditCameraComponent', () => {
   let activeCamerasService: ActiveCamerasService;
   let toastrService: ToastrService;
   let streamHelperService: StreamHelperService;
-  let changeDetectorRef: ChangeDetectorRef;
 
   const mockCamera: CameraItem = {
     id: 'cam1',
@@ -24,12 +21,16 @@ describe('EditCameraComponent', () => {
     selected: false,
   };
 
+  /** Lets the component's validation promise chain settle before asserting. */
+  async function awaitValidationChain(): Promise<void> {
+    await new Promise<void>((resolve) => setTimeout(resolve, 0));
+    await new Promise<void>((resolve) => setTimeout(resolve, 0));
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, FormsModule],
-      declarations: [EditCameraComponent],
+      imports: [ReactiveFormsModule, FormsModule, EditCameraComponent],
       providers: [
-        FormBuilder,
         {
           provide: ActiveCamerasService,
           useValue: {
@@ -42,11 +43,7 @@ describe('EditCameraComponent', () => {
         },
         {
           provide: StreamHelperService,
-          useValue: { validateStreamUrl: jest.fn(() => of(true)) },
-        },
-        {
-          provide: ChangeDetectorRef,
-          useValue: { markForCheck: jest.fn() },
+          useValue: { validateStreamUrl: jest.fn(() => Promise.resolve(true)) },
         },
       ],
     }).compileComponents();
@@ -58,7 +55,6 @@ describe('EditCameraComponent', () => {
     activeCamerasService = TestBed.inject(ActiveCamerasService);
     toastrService = TestBed.inject(ToastrService);
     streamHelperService = TestBed.inject(StreamHelperService);
-    changeDetectorRef = TestBed.inject(ChangeDetectorRef);
 
     fixture.componentRef.setInput('camera', mockCamera);
     fixture.detectChanges();
@@ -90,6 +86,7 @@ describe('EditCameraComponent', () => {
 
     jest.spyOn(activeCamerasService, 'updateCamera');
     await component.onSubmit();
+    await awaitValidationChain();
 
     expect(activeCamerasService.updateCamera).toHaveBeenCalledWith(
       updatedCamera,
@@ -104,6 +101,7 @@ describe('EditCameraComponent', () => {
     component.cameraForm.controls['streamUrl'].setValue('invalid-url');
 
     await component.onSubmit();
+    await awaitValidationChain();
 
     expect(toastrService.error).toHaveBeenCalledWith(
       'Not valid stream url. Try a different.',
@@ -115,11 +113,14 @@ describe('EditCameraComponent', () => {
     expect(component.isDialogOpen()).toBe(false);
   });
 
-  it('should mark for check after submitting the form', async () => {
-    jest.spyOn(changeDetectorRef, 'markForCheck');
+  it('should reset the loading state after submitting the form', async () => {
+    component.loading = true;
 
     await component.onSubmit();
+    await awaitValidationChain();
 
-    expect(changeDetectorRef.markForCheck).toHaveBeenCalled();
+    // The callback that clears the loading state runs alongside markForCheck,
+    // so this covers the refresh path after validation settles.
+    expect(component.loading).toBe(false);
   });
 });

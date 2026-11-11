@@ -23,6 +23,17 @@
         class="w-2.5 h-2.5 bg-red-500 rounded-full shadow-sm ring-2 ring-red-100"
       ></div>
     }
+  } @else {
+    <div
+      class="w-2.5 h-2.5 rounded-full shadow-sm ring-2 {{ healthDotClass() }}"
+      [title]="
+        healthStatus === 'live'
+          ? 'Stream is live'
+          : healthStatus === 'offline'
+            ? 'Stream appears offline'
+            : 'Checking stream availability'
+      "
+    ></div>
   }
   <button
     type="button"
