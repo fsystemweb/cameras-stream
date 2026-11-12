@@ -20,6 +20,8 @@ CamerasStream: an Angular 18 app for watching live IPTV/HLS camera streams in th
 - Tests sit next to the code as `*.spec.ts`; setup file is `src/test-setup.ts`.
 - CI (`.github/workflows/`): `run-tests.yml` runs `npm ci` and `npm run test`; `deploy.yml` builds and deploys.
 - No video files are stored; stream URLs come from user-submitted public links.
+- Stream health: `StreamHealthService` probes every non-local stream on startup and then every 60s (`AVAILABILITY_PROBE_INTERVAL_MS`); per-camera results live/offline/unknown are published via `statuses$` and rendered as chips in `camera-container` and dots in `list-item`. Local webcams are never probed and are treated as always live.
+- Multi-camera grid: `CameraPanelComponent.getGridClass()` sizes the responsive grid (1–4 columns via Tailwind breakpoints based on how many cameras are selected) and `CameraContainerComponent.togglePictureInPicture()` floats any selected camera's `<video>` into native Picture-in-Picture when browser support exists.
 
 ## Boundaries
 - Always: add or update a `*.spec.ts` with every behavior change, then run `npm run lint` and `npm run test`.

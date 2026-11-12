@@ -67,7 +67,7 @@ describe('CameraPanelComponent', () => {
       },
       {
         cameras: [{ id: '1' } as CameraItem, { id: '2' } as CameraItem],
-        expectedClass: 'grid grid-cols-2',
+        expectedClass: 'grid grid-cols-1 sm:grid-cols-2',
       },
       {
         cameras: [
@@ -76,11 +76,12 @@ describe('CameraPanelComponent', () => {
           { id: '3' } as CameraItem,
           { id: '4' } as CameraItem,
         ],
-        expectedClass: 'grid grid-cols-3',
+        expectedClass: 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3',
       },
       {
         cameras: new Array(7).fill({ id: '1' } as CameraItem),
-        expectedClass: 'grid grid-cols-4',
+        expectedClass:
+          'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4',
       },
     ];
 

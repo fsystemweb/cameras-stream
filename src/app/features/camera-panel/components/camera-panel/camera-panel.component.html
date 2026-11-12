@@ -34,7 +34,10 @@
       </div>
     </div>
   } @else {
-    <div [ngClass]="getGridClass()" class="gap-4 p-4 h-full">
+    <div
+      [ngClass]="getGridClass()"
+      class="gap-3 md:gap-4 p-4 h-full auto-rows-fr"
+    >
       @for (camera of camerasActive; track camera.id) {
         <div
           class="rounded-xl shadow-sm bg-surface ring-1 ring-slate-200 overflow-hidden flex flex-col h-full"

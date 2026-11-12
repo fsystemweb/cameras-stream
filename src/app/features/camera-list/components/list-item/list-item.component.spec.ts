@@ -4,8 +4,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListItemComponent } from './list-item.component';
 import { ActiveCamerasService } from '../../../../shared/services/active-cameras.service';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import {
+  StreamHealthService,
+  StreamHealthStatus,
+} from '../../../../shared/services/stream-health.service';
 
 class MockActiveCamerasService {
   addCamera = jest.fn();
@@ -15,6 +19,16 @@ class MockActiveCamerasService {
 class MockToastrService {
   info(message: string) {
     return of(true);
+  }
+}
+
+class MockStreamHealthService {
+  private readonly subject = new Subject<Record<string, StreamHealthStatus>>();
+
+  statuses$ = this.subject.asObservable();
+
+  emit(cameraId: string, status: StreamHealthStatus): void {
+    this.subject.next({ [cameraId]: status });
   }
 }
 
@@ -37,6 +51,10 @@ describe('ListItemComponent', () => {
       providers: [
         { provide: ActiveCamerasService, useValue: mockActiveCamerasService },
         { provide: ToastrService, useClass: MockToastrService },
+        {
+          provide: StreamHealthService,
+          useValue: new MockStreamHealthService(),
+        },
       ],
     }).compileComponents();
   });
@@ -74,5 +92,34 @@ describe('ListItemComponent', () => {
     await fixture.whenStable();
 
     expect(fixture.componentInstance.webcamPermission).toBe(false);
+  });
+
+  it('should start with an unknown stream health status', () => {
+    expect(fixture.componentInstance.healthStatus).toBe('unknown');
+    expect(fixture.componentInstance.healthDotClass()).toContain(
+      'bg-slate-300',
+    );
+  });
+
+  it('should track the stream health status emitted by the health service', () => {
+    const healthService = TestBed.inject(
+      StreamHealthService,
+    ) as unknown as MockStreamHealthService;
+    healthService.emit('1', 'live');
+
+    expect(fixture.componentInstance.healthStatus).toBe('live');
+    expect(fixture.componentInstance.healthDotClass()).toContain(
+      'bg-green-500',
+    );
+  });
+
+  it('should render a red health dot for offline streams', () => {
+    const healthService = TestBed.inject(
+      StreamHealthService,
+    ) as unknown as MockStreamHealthService;
+    healthService.emit('1', 'offline');
+
+    expect(fixture.componentInstance.healthStatus).toBe('offline');
+    expect(fixture.componentInstance.healthDotClass()).toContain('bg-red-500');
   });
 });

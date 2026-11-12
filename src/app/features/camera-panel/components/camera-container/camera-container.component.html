@@ -11,6 +11,14 @@
     <ng-content></ng-content>
   </div>
 
+  <div
+    class="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur-md text-white text-xs font-medium px-2.5 py-1 rounded-md shadow-sm border border-white/10 flex items-center gap-1.5"
+    aria-live="polite"
+  >
+    <span class="w-2 h-2 rounded-full shadow-sm {{ healthDotClass() }}"></span>
+    <span>{{ healthLabel() }}</span>
+  </div>
+
   <div class="bg-surface border-t border-slate-100 p-2 flex justify-end">
     <button
       (click)="takeSnapshot()"
@@ -36,6 +44,30 @@
       </svg>
       <span>Snapshot</span>
     </button>
+    @if (pictureInPictureSupported) {
+      <button
+        (click)="togglePictureInPicture()"
+        class="flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-medium py-1.5 px-3 rounded-md hover:bg-slate-50 hover:text-primary hover:border-blue-200 transition-all shadow-sm focus:ring-2 focus:ring-primary/20"
+        title="Picture in picture"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-picture-in-picture"
+        >
+          <rect width="18" height="14" x="3" y="5" rx="2" />
+          <path d="M7 12h4M9 10v4" />
+        </svg>
+        <span>PiP</span>
+      </button>
+    }
   </div>
 
   <a
